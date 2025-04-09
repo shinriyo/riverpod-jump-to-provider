@@ -1,53 +1,75 @@
-# riverpod-jump-to-provider README
+# Riverpod Jump to Provider
 
-This is the README for your extension "riverpod-jump-to-provider". After writing up a brief description, we recommend including the following sections.
+VSCode extension that enables jumping from a Riverpod provider usage to its definition in the original `.dart` file.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Jump from a provider usage (e.g., `settingScreenProvider`) to its definition in the original `.dart` file
+- Works with both `Cmd+Click` (Mac) / `Ctrl+Click` (Windows/Linux) and `Cmd+Shift+P` / `Ctrl+Shift+P` shortcuts
+- Automatically detects the corresponding `.g.dart` file and finds the original `.dart` file using the `part of` statement
+- Supports both `@riverpod` and `@ProviderFor` annotations
 
-For example if there is an image subfolder under your extension project workspace:
+## Usage
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Place your cursor on a provider usage (e.g., `settingScreenProvider`)
+2. Use one of the following methods to jump to the definition:
+   - `Cmd+Click` (Mac) / `Ctrl+Click` (Windows/Linux) on the provider name
+   - Press `Cmd+Shift+P` (Mac) / `Ctrl+Shift+P` (Windows/Linux) and type "Go to Riverpod Declaration"
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+The extension will:
+1. Find the corresponding `.g.dart` file that contains the provider definition
+2. Detect the `part of` statement in the `.g.dart` file
+3. Jump to the original `.dart` file and the class definition
+
+## Example
+
+```dart
+// In some_file.dart
+final someProvider = ref.watch(settingScreenProvider); // Cmd+Click here
+
+// In setting_screen.g.dart
+part of 'setting_screen.dart';
+@riverpod
+class SettingScreen extends _$SettingScreen {
+  // ...
+}
+
+// In setting_screen.dart
+@riverpod
+class SettingScreen extends _$SettingScreen {
+  // Jumps here
+}
+```
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- VSCode 1.60.0 or higher
+- Dart extension for VSCode
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+* `riverpod-jump-to-provider.enableLogging`: Enable/disable logging for debugging
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- The extension may not work correctly if the provider name does not follow the standard naming convention (e.g., `nameProvider`)
+- The extension relies on the `part of` statement in `.g.dart` files, so it may not work with custom code generation setups
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
+Initial release of Riverpod Jump to Provider
 
-### 1.0.1
+## Contributing
 
-Fixed issue #.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-### 1.1.0
+## License
 
-Added features X, Y, and Z.
-
----
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Following extension guidelines
 

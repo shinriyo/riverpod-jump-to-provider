@@ -3,6 +3,7 @@
   "displayName": "riverpod-jump-to-provider",
   "description": "Jump from Riverpod provider usages (like xxxProvider) directly to their @riverpod declarations in Dart files.",
   "version": "0.0.1",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.99.0"
   },

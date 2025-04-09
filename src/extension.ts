@@ -13,25 +13,25 @@ async function jumpToRiverpodOrigin(document: vscode.TextDocument, position: vsc
   const word = document.getText(range);
   if (!word.endsWith('Provider')) return null;
 
-  // プロジェクトのルートディレクトリを取得
+  // Get the project root directory
   const workspaceFolders = vscode.workspace.workspaceFolders;
   if (!workspaceFolders || workspaceFolders.length === 0) return null;
   const rootPath = workspaceFolders[0].uri.fsPath;
 
-  // プロジェクト内のすべての.g.dartファイルを検索
+  // Search for all .g.dart files in the project
   const gDartFiles = await vscode.workspace.findFiles('**/*.g.dart');
   console.log('Found .g.dart files:', gDartFiles.map(f => f.fsPath));
 
-  // 各.g.dartファイルをチェック
+  // Check each .g.dart file
   for (const gDartFile of gDartFiles) {
     const gDartContent = fs.readFileSync(gDartFile.fsPath, 'utf8');
     console.log('Checking .g.dart file:', gDartFile.fsPath);
 
-    // 定数名が.g.dartファイル内に存在するか確認
+    // Check if the constant name exists in the .g.dart file
     if (gDartContent.includes(word)) {
       console.log('Found provider in .g.dart file:', gDartFile.fsPath);
 
-      // part ofステートメントを探す
+      // Look for the part of statement
       const partOfMatch = gDartContent.match(/part of ['"](.+)['"]/);
       if (!partOfMatch) {
         console.log('No part of statement found in .g.dart file');
@@ -43,18 +43,18 @@ async function jumpToRiverpodOrigin(document: vscode.TextDocument, position: vsc
       const absoluteTargetPath = path.resolve(gDartDir, relativePath);
       console.log('Absolute target path:', absoluteTargetPath);
 
-      // ファイルが存在するか確認
+      // Check if the file exists
       if (!fs.existsSync(absoluteTargetPath)) {
         console.log('Target file does not exist');
         continue;
       }
 
-      // クラス名を推定
+      // Infer the class name
       const providerForMatch = gDartContent.match(/@ProviderFor\((\w+)\)/);
       const providerName = word.replace(/Provider$/, '');
       const className = providerForMatch ? providerForMatch[1] : toPascalCase(providerName);
 
-      // ファイルを開いてジャンプ
+      // Open the file and jump to the definition
       const uri = vscode.Uri.file(absoluteTargetPath);
       const targetDoc = await vscode.workspace.openTextDocument(uri);
       const lines = targetDoc.getText().split('\n');
@@ -80,7 +80,7 @@ async function jumpToRiverpodOrigin(document: vscode.TextDocument, position: vsc
 }
 
 export function activate(context: vscode.ExtensionContext) {
-  // Cmd+Alt+G でジャンプできるコマンド
+  // Command for Cmd+Shift+P jump
   const jumpCommand = vscode.commands.registerCommand(
     'riverpod-jump-to-provider.goToDefinition',
     async () => {
@@ -96,9 +96,9 @@ export function activate(context: vscode.ExtensionContext) {
         });
       }
     }
-  );
+  )
 
-  // Cmd+Click / Go to Definition 対応
+  // Support for Cmd+Click / Go to Definition
   const definitionProvider = vscode.languages.registerDefinitionProvider(
     { language: 'dart' },
     {
