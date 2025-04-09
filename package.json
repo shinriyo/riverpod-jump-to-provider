@@ -22,14 +22,8 @@
     ],
     "keybindings": [
       {
+        "key": "cmd+shift+l",
         "command": "riverpod-jump-to-provider.goToDefinition",
-        "key": "cmd+alt+g",
-        "mac": "cmd+alt+g",
-        "when": "editorTextFocus && editorLangId == dart"
-      },
-      {
-        "command": "riverpod-jump-to-provider.goToDefinition",
-        "key": "ctrl+alt+g",
         "when": "editorTextFocus && editorLangId == dart"
       }
     ]
