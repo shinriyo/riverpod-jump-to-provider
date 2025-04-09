@@ -22,7 +22,7 @@
     ],
     "keybindings": [
       {
-        "key": "cmd+shift+l",
+        "key": "cmd+shift+p",
         "command": "riverpod-jump-to-provider.goToDefinition",
         "when": "editorTextFocus && editorLangId == dart"
       }
