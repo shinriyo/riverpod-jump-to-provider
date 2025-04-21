@@ -8,14 +8,20 @@ function toPascalCase(input: string): string {
 
 async function jumpToRiverpodOrigin(document: vscode.TextDocument, position: vscode.Position): Promise<vscode.Location | null> {
   const range = document.getWordRangeAtPosition(position);
-  if (!range) return null;
+  if (!range) {
+    return null;
+  }
 
   const word = document.getText(range);
-  if (!word.endsWith('Provider')) return null;
+  if (!word.endsWith('Provider')) {
+    return null;
+  }
 
   // Get the project root directory
   const workspaceFolders = vscode.workspace.workspaceFolders;
-  if (!workspaceFolders || workspaceFolders.length === 0) return null;
+  if (!workspaceFolders || workspaceFolders.length === 0) {
+    return null;
+  }
   const rootPath = workspaceFolders[0].uri.fsPath;
 
   // Search for all .g.dart files in the project
@@ -85,7 +91,9 @@ export function activate(context: vscode.ExtensionContext) {
     'riverpod-jump-to-provider.goToDefinition',
     async () => {
       const editor = vscode.window.activeTextEditor;
-      if (!editor) return;
+      if (!editor) {
+        return;
+      }
       const document = editor.document;
       const position = editor.selection.active;
 
@@ -96,7 +104,7 @@ export function activate(context: vscode.ExtensionContext) {
         });
       }
     }
-  )
+  );
 
   // Support for Cmd+Click / Go to Definition
   const definitionProvider = vscode.languages.registerDefinitionProvider(
