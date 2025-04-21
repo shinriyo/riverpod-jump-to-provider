@@ -1,9 +1,9 @@
 {
   "name": "riverpod-jump-to-provider",
-  "displayName": "riverpod-jump-to-provider",
+  "displayName": "Riverpod Jump to Provider",
   "publisher": "shinriyo",
   "description": "Jump from Riverpod provider usages (like xxxProvider) directly to their @riverpod declarations in Dart files.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/shinriyo/riverpod-jump-to-provider.git"
