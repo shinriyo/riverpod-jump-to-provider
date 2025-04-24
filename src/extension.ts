@@ -69,10 +69,10 @@ async function jumpToRiverpodOrigin(document: vscode.TextDocument, position: vsc
       for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
         if (
-          (line.includes(`class ${className}`) || line.includes(`class ${className} `)) &&
-          line.includes('extends')
+          (line.includes(`@riverpod`) || line.includes(`@Riverpod`)) &&
+          i + 1 < lines.length
         ) {
-          lineNumber = i;
+          lineNumber = i + 1;
           break;
         }
       }
@@ -100,7 +100,9 @@ export function activate(context: vscode.ExtensionContext) {
       const location = await jumpToRiverpodOrigin(document, position);
       if (location) {
         await vscode.window.showTextDocument(location.uri, {
-          selection: new vscode.Range(location.range.start, location.range.start)
+          selection: new vscode.Range(location.range.start, location.range.start),
+          viewColumn: vscode.ViewColumn.Active,
+          preserveFocus: false
         });
       }
     }
