@@ -57,15 +57,20 @@ Bu genişlənmə aşağıdakı parametrləri təqdim edir:
 - Əgər provider adı standart adlandırma qaydasına (məsələn: `nameProvider`) uyğun deyilsə, genişlənmə düzgün işləməyə bilər
 - Genişlənmə `.g.dart` fayllarındakı `part of` ifadəsinə güvənir, buna görə də xüsusi kod yaradılması parametrləri ilə işləməyə bilər
 
-## Buraxılış qeydləri
+## Buraxılış Qeydləri
+
+### 0.0.3
+
+- Sinif tərifi əvəzinə provayder həyata keçirilməsinə (funksiya tərifi) keçid dəstəyi
+- Keçiddən sonra fokus davranışının təkmilləşdirilməsi
 
 ### 0.0.2
 
-- Cursor və digər VSCode əsaslı redaktorlarla uyğunluğu artırmaq üçün VSCode minimum versiya tələbini 1.99.0-dan 1.60.0-a endirdi
+- Cursor və digər VSCode əsaslı redaktorlarla daha yaxşı uyğunluq üçün VSCode minimum versiya tələbini 1.99.0-dan 1.60.0-a endirdi
 
 ### 0.0.1
 
-Riverpod Jump to Provider-in ilk buraxılışı
+Riverpod Jump to Provider-ın ilk versiyası
 
 ## Töhfə
 

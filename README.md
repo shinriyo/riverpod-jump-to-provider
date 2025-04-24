@@ -59,6 +59,11 @@ This extension contributes the following settings:
 
 ## Release Notes
 
+### 0.0.3
+
+- Added support for jumping to provider implementation (function definition) instead of class definition
+- Improved focus behavior after jumping to the target location
+
 ### 0.0.2
 
 - Lowered the minimum VSCode version requirement from 1.99.0 to 1.60.0 for better compatibility with Cursor and other VSCode-based editors

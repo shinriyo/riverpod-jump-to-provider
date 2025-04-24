@@ -59,9 +59,14 @@ Tiện ích mở rộng này cung cấp các cài đặt sau:
 
 ## Ghi chú phát hành
 
+### 0.0.3
+
+- Hỗ trợ nhảy đến phần triển khai provider (định nghĩa hàm) thay vì định nghĩa lớp
+- Cải thiện hành vi focus sau khi nhảy
+
 ### 0.0.2
 
-- Giảm yêu cầu phiên bản VSCode tối thiểu từ 1.99.0 xuống 1.60.0 để tăng khả năng tương thích với Cursor và các trình soạn thảo dựa trên VSCode khác
+- Giảm yêu cầu phiên bản VSCode tối thiểu từ 1.99.0 xuống 1.60.0 để tương thích tốt hơn với Cursor và các trình soạn thảo dựa trên VSCode khác
 
 ### 0.0.1
 
