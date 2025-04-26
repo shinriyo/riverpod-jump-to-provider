@@ -59,13 +59,18 @@ class SettingScreen extends _$SettingScreen {
 
 ## 릴리스 노트
 
+### 0.0.3
+
+- 클래스 정의 대신 프로바이더 구현(함수 정의)으로 점프하는 기능 지원
+- 점프 후 포커스 동작 개선
+
 ### 0.0.2
 
-- Cursor 및 기타 VSCode 기반 편집기와의 호환성을 높이기 위해 VSCode 최소 버전 요구사항을 1.99.0에서 1.60.0으로 낮춤
+- Cursor 및 기타 VSCode 기반 에디터와의 호환성을 높이기 위해 VSCode 최소 버전 요구사항을 1.99.0에서 1.60.0으로 낮춤
 
 ### 0.0.1
 
-Riverpod Jump to Provider의 초기 릴리스
+Riverpod Jump to Provider 초기 릴리스
 
 ## 기여
 
